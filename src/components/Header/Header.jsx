@@ -1,8 +1,10 @@
 import React from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AiOutlineUser } from "react-icons/ai";
 const Header = () => {
+  const location = useLocation();
+  if (location.pathname === "/login") return;
   return (
     <div className="header">
       <div className="headerLogo">
