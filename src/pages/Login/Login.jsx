@@ -55,7 +55,7 @@ export default function SignIn() {
   return (
     <div>
       <div className="login_wrapper">
-        <h1>Sign in</h1>
+        <h1 className="signinTitle">Sign in</h1>
         <br />
         <br />
         <form className="loginForm" onSubmit={handleSubmit}>
