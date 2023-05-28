@@ -1,0 +1,60 @@
+.copyright {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.login_wrapper {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+.loginForm {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.email_wrapper,
+.password_wrapper {
+  position: relative;
+}
+.email_wrapper input,
+.password_wrapper input {
+  width: 350px;
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px;
+  outline: none;
+}
+.email_wrapper label,
+.password_wrapper label {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  transition: 0.3s;
+  width: max-content;
+  padding: 2px;
+  background: #fff;
+}
+.email_wrapper input:focus ~ label,
+.email_wrapper input:valid ~ label,
+.password_wrapper input:focus ~ label,
+.password_wrapper input:valid ~ label {
+  top: -10px;
+  font-size: 16px;
+}
+.loginSubmitBtn {
+  width: 370px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #2a85ff;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+}
