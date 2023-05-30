@@ -29,9 +29,7 @@
 .car_image {
   max-width: 900px;
   width: 100%;
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
+  height: 500px;
 }
 .switch_mode {
   width: 100%;
@@ -39,4 +37,24 @@
   justify-content: center;
   margin-top: 20px;
   gap: 10px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 100%;
+  object-fit: fill;
 }

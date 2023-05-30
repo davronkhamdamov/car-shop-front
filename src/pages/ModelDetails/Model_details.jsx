@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import "./Model_details.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper";
+
 const Model_details = () => {
-  const param = useParams();
-  useEffect(() => {
-    fetch("url", {})
-      .then((res) => res.json())
-      .then((data) => {
-        // todo
-      });
-  }, []);
+  // const param = useParams();
+  // useEffect(() => {
+  //   fetch("url", {})
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       todo;
+  //     });
+  // }, []);
   return (
     <div>
       <br />
@@ -47,7 +51,7 @@ const Model_details = () => {
           <p>
             Deseription:
             <span>
-              Mishina ideal holatda krasska top toza 100tali. Ayol kishiniki
+              Moshina ideal holatda krasska top toza 100tali. Ayol kishiniki
               judayam akuratno haydalgan.
             </span>
           </p>
@@ -59,13 +63,24 @@ const Model_details = () => {
           </div>
         </div>
         <div className="car_image">
-          <iframe
-            style={{ border: "1px solid red" }}
-            width="900"
-            height="450"
-            src="https://momento360.com/e/u/975adf21f7c840c3bd84b373ea393673?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium&display-plan=true"
-            frameborder="0"
-          ></iframe>
+          <Swiper
+            spaceBetween={20}
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <img src="https://picsum.photos/360/200" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="https://picsum.photos/360/200" alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="https://picsum.photos/360/200" alt="" />
+            </SwiperSlide>
+          </Swiper>
           <p style={{ textAlign: "center", letterSpacing: "1px" }}>
             Tasvir tanlangan konfiguratsiyaga mos kelmasligi mumkin. Mashinaning
             rangi ushbu saytda taqdim etilganidan farq qilishi mumkin.
