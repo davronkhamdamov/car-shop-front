@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 @font-face {
   font-family: "SF pro";
   font-style: normal;
@@ -5,7 +10,5 @@
   src: local("SF pro"), url("./assets//fonts//SF-Pro-Display-Regular.otf");
 }
 body {
-  margin: 0;
-  padding: 0;
   font-family: "SF pro", sans-serif;
 }
