@@ -20,10 +20,17 @@ const Model_details = () => {
       <h1 className="model_title">Modellari</h1>
       <div className="car_wrapper">
         <div className="car_details">
-          <h2 style={{ letterSpacing: "2px", lineHeight: "10px" }}>
+          <h2
+            style={{
+              letterSpacing: "2px",
+              fontSize: "30px",
+              lineHeight: "60px",
+            }}
+          >
             Chevrolet Malibu
           </h2>
           <p>329 900 000 so‘m dan</p>
+          <br />
           <div className="car_image_small">
             <img src="https://picsum.photos/360/200" alt="" />
           </div>
@@ -55,8 +62,7 @@ const Model_details = () => {
               judayam akuratno haydalgan.
             </span>
           </p>
-          <hr />
-          <div>
+          <div style={{ borderTop: "1px solid black" }}>
             <p style={{ textAlign: "end" }}>
               Umumiy xarajat: <span>329 900 000 so'm dan</span>
             </p>
@@ -64,7 +70,6 @@ const Model_details = () => {
         </div>
         <div className="car_image">
           <Swiper
-            spaceBetween={20}
             pagination={{
               dynamicBullets: true,
             }}
@@ -72,10 +77,10 @@ const Model_details = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <img src="https://picsum.photos/360/200" alt="" />
+              <img src="https://picsum.photos/360/199" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="https://picsum.photos/360/200" alt="" />
+              <img src="https://picsum.photos/360/201" alt="" />
             </SwiperSlide>
             <SwiperSlide>
               <img src="https://picsum.photos/360/200" alt="" />
