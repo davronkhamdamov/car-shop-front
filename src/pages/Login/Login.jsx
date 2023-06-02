@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "./Login.css";
+import "react-toastify/dist/ReactToastify.css";
 
-function Copyright(props) {
+function Copyright() {
   return (
     <p className="copyright">
       {"Copyright © "}
@@ -15,11 +16,11 @@ function Copyright(props) {
 export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(process.env.REACT_APP_BASE_URL + "/admin/login", {
+    fetch(process.env.REACT_APP_BASE_URL + "/auth/login", {
       method: "POST",
       body: JSON.stringify({
-        username: event.target.email.trim(),
-        password: event.target.password.trim(),
+        email: event.target.email.value.trim(),
+        password: event.target.password.value.trim(),
       }),
       headers: {
         "Content-Type": "application/json",
@@ -34,9 +35,11 @@ export default function SignIn() {
           return errors("error", data.message);
         }
         if (data?.token) {
-          localStorage.setItem("token", data.token);
           errors("success", data.message);
-          return setIsAdmin(true);
+          localStorage.setItem("token", data.token);
+          setTimeout(() => {
+            window.location = "/";
+          }, 2000);
         }
       });
   };
