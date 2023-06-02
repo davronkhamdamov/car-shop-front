@@ -11,12 +11,14 @@ import Model_details from "./pages/ModelDetails/Model_details";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Admin/Admin.jsx";
+import CategoryCar from "./pages/Categorycar/CategoryCar.jsx";
 
 const rout = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Category />} />
-      <Route path="/cars/:id" element={<Model_details />} />
+      <Route path="/:id" element={<CategoryCar />} />
+      <Route path="/:id/:id" element={<Model_details />} />
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<PageNotFound />} />
