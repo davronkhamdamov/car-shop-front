@@ -1,19 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Model_details.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { useParams } from "react-router-dom";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Model_details = () => {
-  // const param = useParams();
-  // useEffect(() => {
-  //   fetch("url", {})
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       todo;
-  //     });
-  // }, []);
+  const [car, setCar] = useState([]);
+  const { id } = useParams();
+  useEffect(() => {
+    fetch(process.env.REACT_APP_BASE_URL + "/car/one/" + id, {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCar(data[0]);
+      });
+  }, []);
   return (
     <div>
       <br />
@@ -27,42 +34,38 @@ const Model_details = () => {
               lineHeight: "60px",
             }}
           >
-            Chevrolet Malibu
+            {car.title}
           </h2>
-          <p>329 900 000 so‘m dan</p>
-          <br />
+          <p>{car.price} dan</p>
           <div className="car_image_small">
-            <img src="https://picsum.photos/360/200" alt="" />
+            <img src={car.baseimgurl} alt="car" />
           </div>
           <p>
-            Marka: <span>CHEVROLET</span>
+            Marka: <span>{car.title}</span>
           </p>
           <p>
-            Tanirovkasi: <span>Yo‘q</span>
+            Tanirovkasi:{" "}
+            <span>{car.tanirovkasi === "true" ? "Ha" : "Yoq"}</span>
           </p>
           <p>
-            Motor: <span>1.6</span>
+            Motor: <span>{car.motor}</span>
           </p>
           <p>
-            Year: <span>2016</span>
+            Year: <span>{car.year}</span>
           </p>
           <p>
-            Color: <span>Oq</span>
+            Color: <span>{car.color}</span>
           </p>
           <p>
-            Distance: <span>3000 km</span>
+            Distance: <span>{car.distance}</span>
           </p>
           <p>
-            Gearbook: <span>Avtomat karobka</span>
+            Gearbook: <span>{car.gearbook}</span>
           </p>
           <p>
-            Deseription:
-            <span>
-              Moshina ideal holatda krasska top toza 100tali. Ayol kishiniki
-              judayam akuratno haydalgan.
-            </span>
+            Deseription: <span>{car.deseription}</span>
           </p>
-          <div style={{ borderTop: "1px solid black" }}>
+          <div style={{ borderTop: "1px solid black", paddingTop: "10px" }}>
             <p style={{ textAlign: "end" }}>
               Umumiy xarajat: <span>329 900 000 so'm dan</span>
             </p>
@@ -77,24 +80,25 @@ const Model_details = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <img src="https://picsum.photos/360/199" alt="" />
+              <img src={car.baseimgurl} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="https://picsum.photos/360/201" alt="" />
+              <img src={car.outsideimgurl} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="https://picsum.photos/360/200" alt="" />
+              <img src={car.insideimgurl} alt="" />
             </SwiperSlide>
           </Swiper>
+          <br />
           <p style={{ textAlign: "center", letterSpacing: "1px" }}>
             Tasvir tanlangan konfiguratsiyaga mos kelmasligi mumkin. Mashinaning
             rangi ushbu saytda taqdim etilganidan farq qilishi mumkin.
           </p>
           <div className="switch_mode">
-            <input type="radio" name="mode" id="inside" />
-            <label htmlFor="inside">Inside</label>
-            <input type="radio" name="mode" id="outside" />
-            <label htmlFor="outside">Outside</label>
+            <button>
+              <AiOutlineShoppingCart />
+              Add to card
+            </button>
           </div>
         </div>
       </div>
