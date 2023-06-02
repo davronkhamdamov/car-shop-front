@@ -34,9 +34,66 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  z-index: 10;
 }
 .profile_img img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+.profile_img.active .profile_model {
+  height: 130px;
+  padding: 10px 0;
+  width: 130px;
+}
+
+.profile_model {
+  position: absolute;
+  width: 0;
+  height: 0px;
+  left: 35px;
+  top: 45px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  padding: 0;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.profile_model a {
+  text-decoration: none;
+  color: #111;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 19;
+}
+.profile_model a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.visible {
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  display: block;
+  z-index: 9;
+  transition: 2s;
+  display: none;
+}
+.visible.active {
+  display: block;
 }
