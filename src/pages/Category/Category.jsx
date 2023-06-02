@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
+import Card from "../../components/Card/Card";
 import "./Category.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Category = () => {
-  const [data, setData] = useState();
-
+  const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/photos")
+    fetch(process.env.REACT_APP_BASE_URL + "/model/all", {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    })
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        if (data.statusCode === 401) {
+          window.location = "/login";
+        }
+        setData(data);
+      });
   }, []);
-
   return (
     <div className="category_wrapper">
-      {data?.map((e) => {
-        return (
-          <div key={e.id} className="category_item">
-            <div className="imgWrapper">
-              <LazyLoadImage effect="blur" src={e.url} />
-            </div>
-            <p className="category_title">{e.title}</p>
-          </div>
-        );
-      })}
+      {data[0] ? (
+        <Card data={data} />
+      ) : (
+        <div style={{ textAlign: "center", width: "100%" }}>
+          <h2>Nothing found</h2>
+        </div>
+      )}
     </div>
   );
 };
