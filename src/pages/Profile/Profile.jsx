@@ -1,7 +1,9 @@
 import React from "react";
 import "./Profile.css";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const userData = useSelector(({ data }) => data);
   return (
     <div className="profile_wrapper">
       <h2 className="settings_title">Settings</h2>
@@ -10,12 +12,12 @@ const Profile = () => {
         <div className="user_information_wrapper">
           <div className="user_information">
             <div className="user_item">Name</div>
-            <div className="user_item">Davron Xamdamov</div>
+            <div className="user_item">{userData.username}</div>
             <button>Edit</button>
           </div>
           <div className="user_information">
             <div className="user_item">Email</div>
-            <div className="user_item">xamdamovdavron6@gmail.com</div>
+            <div className="user_item">{userData.email}</div>
             <button>Edit</button>
           </div>
           <div className="user_information">
