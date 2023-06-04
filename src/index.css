@@ -12,3 +12,10 @@
 body {
   font-family: "SF pro", sans-serif;
 }
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 20px;
+}
