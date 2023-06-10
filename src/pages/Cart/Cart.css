@@ -1,0 +1,7 @@
+.cart {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}

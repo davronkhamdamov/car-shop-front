@@ -29,6 +29,7 @@
 }
 .car_image_small img {
   width: 100%;
+  height: 250px;
   object-fit: contain;
 }
 .car_image {
@@ -40,19 +41,6 @@
   width: 100%;
   height: 80px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.switch_mode button {
-  width: 200px;
-  height: 30px;
-  border-radius: 50px;
-  background: #0071e3;
-  border: none;
-  color: white;
-  outline: none;
-  display: flex;
-  gap: 10px;
   justify-content: center;
   align-items: center;
 }
@@ -68,5 +56,23 @@
 }
 .swiper-slide img {
   width: 100%;
+  height: 500px;
   object-fit: contain;
+  object-position: center;
+}
+.cancel_btn {
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background: #333;
+  color: #eee;
+  animation: popup 1s forwards;
+  opacity: 0;
+}
+
+@keyframes popup {
+  100% {
+    opacity: 1;
+  }
 }

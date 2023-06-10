@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
-    data: []
+    users: []
 }
 export const slice = createSlice({
-    name: 'data',
+    name: 'users',
     initialState,
     reducers: {
         setPosts: (state, action) => {
-            state.data = action.payload
+            state.users = action.payload
         }
     }
 })
 
-export const Posts = slice.actions
-export const reduser = slice.reducer
+export const UserActions = slice.actions
+export const UserReduser = slice.reducer

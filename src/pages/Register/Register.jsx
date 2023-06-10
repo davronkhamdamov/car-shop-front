@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "./Login.css";
 import "react-toastify/dist/ReactToastify.css";
 
 function Copyright() {
@@ -12,13 +11,13 @@ function Copyright() {
     </p>
   );
 }
-
-export default function SignIn() {
+const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(process.env.REACT_APP_BASE_URL + "/auth/login", {
+    fetch(process.env.REACT_APP_BASE_URL + "/auth/register", {
       method: "POST",
       body: JSON.stringify({
+        username: event.target.name.value.trim(),
         email: event.target.email.value.trim(),
         password: event.target.password.value.trim(),
       }),
@@ -31,14 +30,13 @@ export default function SignIn() {
         if ("usename" === data.message) {
           return errors("error", "Username is required");
         }
-        if (data?.error || data?.status) {
+        if (data?.error || data.status) {
           return errors("error", data.message);
         }
-        if (data?.token) {
+        if (data?.message) {
           errors("success", data.message);
-          localStorage.setItem("token", data.token);
           setTimeout(() => {
-            window.location = "/";
+            window.location = "/login";
           }, 2000);
         }
       });
@@ -58,10 +56,14 @@ export default function SignIn() {
   return (
     <div>
       <div className="login_wrapper">
-        <h1 className="signinTitle">Sign in</h1>
+        <h1 className="signinTitle">Sign Up</h1>
         <br />
         <br />
         <form className="loginForm" onSubmit={handleSubmit}>
+          <div className="email_wrapper">
+            <input required type="text" id="name" name="name" />
+            <label htmlFor="name">Name</label>
+          </div>
           <div className="email_wrapper">
             <input required type="text" id="email" name="email" />
             <label htmlFor="email">Email</label>
@@ -75,7 +77,7 @@ export default function SignIn() {
           </button>
         </form>
         <p>
-          New to GM? <Link to="/register">Sign Up →</Link>
+          Already have an account? <Link to="/login">Sign in →</Link>
         </p>
       </div>
       <Copyright />
@@ -93,4 +95,5 @@ export default function SignIn() {
       />
     </div>
   );
-}
+};
+export default Register;

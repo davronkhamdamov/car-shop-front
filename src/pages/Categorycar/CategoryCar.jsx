@@ -19,11 +19,11 @@ const CategoryCar = () => {
         }
         setData(data);
       });
-  }, []);
+  }, [id]);
   return (
     <div className="category_wrapper">
       {data[0] ? (
-        <Card data={data} type={"car"} />
+        <Card data={data} type="car" />
       ) : (
         <div style={{ textAlign: "center", width: "100%" }}>
           <h2>Nothing found</h2>
